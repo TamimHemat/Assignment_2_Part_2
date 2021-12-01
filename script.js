@@ -91,3 +91,33 @@ function createSingleIndex(evt){
         renderView(cName)
     }}
 
+let ListOfCaptures = []
+
+// Functions for the Index Page
+
+function cleanUpIndex(){
+    const clean = document.querySelectorAll('div.contact')
+    for (let i=0; i<clean.length; i++){
+        clean[i].remove()
+    }
+    var links = document.querySelectorAll('a[href="page3.html"]');
+    for (let i=0; i<links.length; i++){
+        links[i].remove()
+    }
+}
+
+function renderIndex(contactList){
+    const section = document.querySelector('.main')
+    for (let obj of contactList){
+        section.insertAdjacentHTML('beforeend', insertDOMIndex(obj.name))
+    }
+    const singleDom = document.querySelectorAll('a[href="page3.html"]')
+    for (let doms of singleDom){
+        doms.addEventListener('click', function(evt){
+            evt.preventDefault()
+            evt.stopImmediatePropagation()
+            createSingleIndex(evt)
+        })
+    }
+}
+
