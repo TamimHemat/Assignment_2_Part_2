@@ -174,19 +174,8 @@ function renderView(contact){
     section.insertAdjacentHTML("afterbegin",insertViewPageDOM(contact))
     const editBtn = document.querySelector('.edit')
     editBtn.addEventListener('click',function(evt){
-        evt.preventDefault()
-        evt.stopImmediatePropagation()
-        let getInfo = document.querySelector(".contactname").firstChild.textContent.trim()
-        let cName = getContactName(getInfo)
-        let edit = Object.values(cName)
-        ListOfCaptures = edit
-        cleanUpView()
-        renderCreate()
-        let fields = document.querySelectorAll('.inputcontainer')
-        for(let i=0; i<fields.length; i++){
-            fields[i].firstElementChild.value = edit[i]
-        }
-    })
+        return 0
+        })
     const closeBtn = document.querySelector('.close')
     closeBtn.addEventListener('click',function(evt){
         cleanUpView()
