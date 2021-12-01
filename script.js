@@ -109,7 +109,7 @@ function cleanUpIndex(){
 function renderIndex(contactList){
     const section = document.querySelector('.main')
     for (let obj of contactList){
-        section.insertAdjacentHTML('beforeend', insertDOMIndex(obj.name))
+        section.insertAdjacentHTML('beforeend', insertIndexPageDOM(obj.name))
     }
     const singleDom = document.querySelectorAll('a[href="page3.html"]')
     for (let doms of singleDom){
@@ -130,7 +130,7 @@ function cleanUpCreate(){
 
 function renderCreate(){
     const section = document.querySelector('.main')
-    section.insertAdjacentHTML('afterbegin',insertDOMCreate())
+    section.insertAdjacentHTML('afterbegin',insertCreatePageDOM())
     let cancelBtn = document.querySelector('.cancel')
     cancelBtn.addEventListener('click', function(evt){
         evt.preventDefault()
@@ -162,3 +162,34 @@ function renderCreate(){
     })
 }
 
+// Functions for the View Page
+
+function cleanUpView(){
+    const clean = document.querySelector('div.contactinfo')
+    clean.remove()
+}
+
+function renderView(contact){
+    const section = document.querySelector('.main')
+    section.insertAdjacentHTML("afterbegin",insertViewPageDOM(contact))
+    const editBtn = document.querySelector('.edit')
+    editBtn.addEventListener('click',function(evt){
+        evt.preventDefault()
+        evt.stopImmediatePropagation()
+        let getInfo = document.querySelector(".contactname").firstChild.textContent.trim()
+        let cName = getContactName(getInfo)
+        let edit = Object.values(cName)
+        captureList = edit
+        cleanUpView()
+        renderCreate()
+        let fields = document.querySelectorAll('.inputcontainer')
+        for(let i=0; i<fields.length; i++){
+            fields[i].firstElementChild.value = edit[i]
+        }
+    })
+    const closeBtn = document.querySelector('.close')
+    closeBtn.addEventListener('click',function(evt){
+        cleanUpView()
+        renderIndex(contactList)
+    })
+}
