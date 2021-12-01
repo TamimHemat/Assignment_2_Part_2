@@ -193,3 +193,41 @@ function renderView(contact){
         renderIndex(contactList)
     })
 }
+
+// Event handling Functions 
+
+var home_nav = document.querySelector('.nav-home');
+home_nav.addEventListener('click',function(evt){
+    evt.preventDefault()
+    evt.stopImmediatePropagation()
+    if (document.querySelector('div.contact') != null){
+       cleanUpIndex() 
+    }
+    if (document.querySelector('.contactedit') !=null){
+        cleanUpCreate()
+    }
+    if (document.querySelector('.contactinfo') !=null){
+        cleanUpView()
+    }
+    renderIndex(contactList)
+});
+
+
+var content_new = document.querySelector('.nav');
+content_new.addEventListener('click',function(evt){
+    evt.preventDefault()
+    evt.stopImmediatePropagation()
+    if (document.querySelector('div.contact') !=null)
+        cleanUpIndex()
+    if (document.querySelector('.contactedit') !=null){
+        cleanUpCreate()
+    }
+    if (document.querySelector('.contactinfo') !=null){
+        cleanUpView()
+    }
+    renderCreate()
+})
+
+document.addEventListener("DOMContentLoaded", evt => {
+    renderIndex(contactList)
+})
