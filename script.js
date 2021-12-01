@@ -1,16 +1,16 @@
-const contactList = [  
-	{ 
-		name: "Raquel Ervin", 
-		phone: "+1 555 555-5555", 
-		address: "123 front st, Unit #1, Dakota City",    
-		email: "rocket@gmail.com"
-	},   
-    {	
-        name: "Jeremy McNinch",    
-        phone: "604 718 1043",    
-        address: "8631 Granville St, Vancouver",    
-        email: "email@email.com"
-    }
+const contactList = [  
+	{ 
+		name: "Oliver Queen", 
+		phone: "778-555-1234", 
+		address: "101 Main St, Star City, USA",    
+		email: "greenarrow@watchtower.com",  
+	},   
+	{    
+		name: "Jessica Cruz",    
+		phone: "123-555-5555",    
+		address: "Portland Oregon",    
+		email: "greenlantern@watchtower.com",  
+	}
 ];
 
 function insertIndexPageDOM(contact) {
