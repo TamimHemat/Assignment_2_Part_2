@@ -121,3 +121,44 @@ function renderIndex(contactList){
     }
 }
 
+// Functions for the Create Page
+
+function cleanUpCreate(){
+    const clean = document.querySelector('div.contactedit')
+    clean.remove()
+}
+
+function renderCreate(){
+    const section = document.querySelector('.main')
+    section.insertAdjacentHTML('afterbegin',insertDOMCreate())
+    let cancelBtn = document.querySelector('.cancel')
+    cancelBtn.addEventListener('click', function(evt){
+        evt.preventDefault()
+        cleanUpCreate()
+        renderIndex(contactList)
+        captureList = []
+    })
+    let saveBtn = document.querySelector('.save')
+    saveBtn.addEventListener('click', function(evt){
+        evt.preventDefault()
+        let info = []
+        let exists = 0
+        let getInfo = document.querySelectorAll('.inputcontainer')
+        for(let i =0; i <getInfo.length; i++){
+            info.push(getInfo[i].firstElementChild.value)
+        }
+        for(let names in contactList){
+            if(captureList[0] == contactList[names].name){
+                contactList.splice(names,1,{name:info[0],phone:info[1],address:info[2],email:info[3]})
+                exists++
+            }
+        }
+        captureList = []
+        if(exists == 0){
+            contactList.push({name:info[0],phone:info[1],address:info[2],email:info[3]})
+            }
+        cleanUpCreate()
+        renderIndex(contactList)
+    })
+}
+
