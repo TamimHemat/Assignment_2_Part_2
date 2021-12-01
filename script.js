@@ -136,7 +136,7 @@ function renderCreate(){
         evt.preventDefault()
         cleanUpCreate()
         renderIndex(contactList)
-        captureList = []
+        ListOfCaptures = []
     })
     let saveBtn = document.querySelector('.save')
     saveBtn.addEventListener('click', function(evt){
@@ -148,12 +148,12 @@ function renderCreate(){
             info.push(getInfo[i].firstElementChild.value)
         }
         for(let names in contactList){
-            if(captureList[0] == contactList[names].name){
+            if(ListOfCaptures[0] == contactList[names].name){
                 contactList.splice(names,1,{name:info[0],phone:info[1],address:info[2],email:info[3]})
                 exists++
             }
         }
-        captureList = []
+        ListOfCaptures = []
         if(exists == 0){
             contactList.push({name:info[0],phone:info[1],address:info[2],email:info[3]})
             }
@@ -179,7 +179,7 @@ function renderView(contact){
         let getInfo = document.querySelector(".contactname").firstChild.textContent.trim()
         let cName = getContactName(getInfo)
         let edit = Object.values(cName)
-        captureList = edit
+        ListOfCaptures = edit
         cleanUpView()
         renderCreate()
         let fields = document.querySelectorAll('.inputcontainer')
